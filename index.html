@@ -1,0 +1,482 @@
+<html>
+<head>
+    <title>PulseChain Connect</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="https://tokens.dextop.pro/dexxx.svg" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+
+    <!-- FB Meta Tags-->
+    <meta property="og:url" content="https://DexTop.pro/connect/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="DexTop.pro">
+    <meta property="og:description" content="Energy Efficient, Cheaper, Faster, Fee-Burning Ethereum fork">
+    <meta property="og:image:url" content="https://tokens.dextop.pro/dexxx.svg">
+    <!-- T Meta Tags-->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DexTop.pro">
+    <meta name="twitter:description" content="Energy Efficient, Cheaper, Faster, Fee-Burning Ethereum fork">
+    <meta name="twitter:image" content="https://tokens.dextop.pro/dexxx.svg">
+
+    <meta name="copyright" content="DexTop, 2024">
+    <meta name="author" content="DexTop Finance">
+    <meta name="description" lang="en" content="Energy Efficient, Cheaper, Faster, Fee-Burning Ethereum fork">
+    <meta name="keywords" lang="en" content="PulseChain, Pulse, Chain, Ethereum, Fork, Richard Heart, Crypto">
+    <meta name="date" content="2024-01-07T00:00:00+01:00">
+    <meta name="page-topic" content="Blockchain,Fork">
+<link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jost:wght@700&family=Poppins:wght@400;500;600;700&display=swap');
+
+        :root {
+            --bgColor: #000;
+            --logoGradient: linear-gradient(210deg, #00eaff 0%, #0080ff 25%, #8000ff 50%, #e619e6 75%, #f00 100%);
+        }
+
+        body {
+            background-color: var(--bgColor);
+            color: #eee;
+            font-family: "Poppins", sans-serif;
+            line-height: 1.5;
+            font-weight: 500;
+            font-size: 16px;
+            text-align: center;
+            margin: 0;
+
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            user-select: none;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .selectable {
+            user-select: text;
+            -webkit-user-select: text;
+        }
+
+        a {
+            color: #0cf;
+            text-decoration: none;
+            transition: all .1s;
+        }
+
+        b {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: 600;
+            width: 100%;
+            position: relative;
+            text-align: center;
+            float: left;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            color: #fff !important;
+            position: relative;
+            display: inline-block;
+            padding: 5px 12px;
+            background-color: #161616;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: -2px;
+            z-index: -1;
+            border-radius: 5px;
+            background: var(--logoGradient);
+        }
+
+        #networkBtn:after {
+            content: '';
+            position: relative;
+            float: left;
+            height: 1.5em;
+            width: 1.5em;
+            margin-right: .3em;
+            background-image: url(dexxx.svg);
+            background-size: contain;
+            background-position: center center;
+        }
+          #stars,
+#stars2,
+#stars3 {
+    position: fixed;
+    top: 0;
+    left: 0;
+   
+    z-index: -1; /* Send the stars behind other content */
+    pointer-events: none; /* Allows interactions with content beneath the stars */
+}
+
+        .menuLink {
+            position: relative;
+            display: inline-block;
+            margin: 0 15px;
+            color: #fff7;
+            font-weight: 600;
+        }
+
+        .card {
+            position: relative;
+            display: inline-block;
+            padding: 30px 50px;
+            width: 80%;
+            background-color: #fff1;
+            border-radius: 8px;
+            box-shadow: 0 25px 35px #153850;
+            margin-top: 50px;
+            text-align: left;
+            max-width: 500px;
+            user-select: text;
+            -webkit-user-select: text;
+        }
+
+        .hl {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .cmrk:after {
+            background-image: url("img/cmrk.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            display: inline-block;
+            width: 18px;
+            height: 20px;
+            content: "";
+            margin-right: 8px;
+        }
+
+        @media not all and (pointer: coarse) {
+            a:hover {
+                color: #0cfa;
+            }
+
+            .btn:hover {
+                background-color: #1d1d1d;
+            }
+
+            .sLink:hover {
+                opacity: .7 !important;
+            }
+
+            .menuLink:hover {
+                color: #fffb;
+            }
+
+            .footerLink:hover {
+                color: #fffb !important;
+            }
+
+            #pulseXlink:hover {
+                text-decoration: none !important;
+            }
+        }
+
+        .menuLinkActive {
+            color: #fff !important;
+            cursor: default;
+        }
+
+
+        #ECGsvgLine {
+            stroke-dasharray: 1850, 50;
+            stroke-linecap: round;
+            stroke-dashoffset: -25;
+            animation: pulsate 3s cubic-bezier(0, .2, 1, .8) infinite;
+            will-change: stroke-dashoffset;
+        }
+
+        @keyframes pulsate {
+            from {
+                stroke-dashoffset: -25;
+            }
+            to {
+                stroke-dashoffset: -1921;
+            }
+        }
+
+
+        @media (max-width: 1020px) {
+            .menuLink {
+                margin: 0 10px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .mainTitleBreak {
+                display: none;
+            }
+
+            .card {
+                width: calc(100% - 100px);
+                max-width: 100%;
+                border-radius: 0;
+                margin-top: 0;
+                box-shadow: none;
+                background-color: transparent;
+            }
+
+            #bgImg {
+                background-size: 150% auto !important;
+            }
+        }
+
+        @media (max-width: 580px) {
+            #timerLbl {
+                letter-spacing: 0 !important;
+            }
+        }
+
+        @media (max-width: 515px) {
+            #timerLbl {
+                font-size: 60px !important;
+            }
+        }
+
+        @media (max-width: 470px) {
+            #topLogo {
+                display: none;
+            }
+
+            #topLogoShort {
+                display: inherit !important;
+            }
+
+            #bgImg {
+                background-size: auto 120% !important;
+            }
+
+            .imgCard {
+                padding: 0;
+                width: 100%;
+            }
+
+            #graphOverDiv {
+                left: 0 !important;
+                width: 100% !important;
+            }
+
+            #timerLbl {
+                font-size: 45px !important;
+            }
+        }
+
+        @media (max-width: 350px) {
+            .sLink {
+                margin-right: 18px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- <div style="position: fixed; top: 40px; left: 0; bottom: 0; right: 0; background-image: url('img/logoBlurred.svg'); background-repeat: no-repeat; background-size: 120% auto; background-position: center center; opacity: .1; z-index: -1000;" id="bgImg"></div> -->
+
+
+
+<div style="position: absolute; top: 80px; height: 290px; width: 100%; left: 0; opacity: .2; z-index: -10;" id="ecgBG">
+    <div style="position: absolute; left: 0; width: 100%; padding-top: 13%; top: 50%; transform: translateY(-50%);">
+        <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" width="1500px" height="201px"
+             viewBox="0 0 1500 201" version="1.1" xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs>
+                <linearGradient x1="61.0522229%" y1="48.0140572%" x2="39.0163373%" y2="52.0335005%"
+                                id="linearGradient-1">
+                    <stop stop-color="#00EAFF" offset="0%"></stop>
+                    <stop stop-color="#0080FF" offset="25.2530882%"></stop>
+                    <stop stop-color="#8000FF" offset="49.7394282%"></stop>
+                    <stop stop-color="#E619E6" offset="74.9912298%"></stop>
+                    <stop stop-color="#FF0000" offset="99.9136118%"></stop>
+                </linearGradient>
+            </defs>
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round">
+                <g id="Header" transform="translate(0.000000, -149.000000)" stroke="url(#linearGradient-1)"
+                   stroke-width="16">
+                    <polyline id="ECGsvgLine"
+                              points="9.09494702e-13 249.818674 681.441827 249.818674 702.941323 285.562182 737.072792 157.798285 763.527146 341.800574 797.472814 214.169796 818.898119 249.818674 1500 250"></polyline>
+                </g>
+            </g>
+        </svg>
+    </div>
+</div>
+
+<b class="hl" id="mainTitle" style="font-size: 32px; font-weight: 700; margin-top: 130px; max-width: 80%;">
+    PulseChain </b>
+<br><br>
+
+<span class="hl"></span>
+<div class="card">
+	Checkout the brand new <a target="_blank" href="https://beacon.pulsechain.com">Explorer</a>. <a target="_blank" href="https://pulseramp.com">Bridge</a> over assets from Ethereum. Become a <a target="_blank" href="https://launchpad.pulsechain.com">Validator</a> to help secure the PulseChain network. Trade your PRC20s on <a target="_blank" href="https://dex.dextop.pro/swap">DexTop</a>.
+
+    <div id="networkBtnOuter" class="hl"
+         style="text-align: center; margin: 20px 0 30px 0; font-weight: 600; color: #0f5;">
+        <a id="networkBtn" class="btn" href="javascript:switchNetwork()" style="visibility: hidden;">Add PulseChain to
+            MetaMask</a>
+    </div>
+    To connect to PulseChain open MetaMask and click the Networks dropdown. Select "Custom Network". Now enter the
+    following information:<br>
+    <div class="hl"
+         style="background-color: #fff1; padding: 12px 25px; margin: 25px 0; border-radius: 8px; width: calc(100% - 50px); word-wrap: break-word;">
+        Network Name:<br>PulseChain<br><br>
+        New RPC URL:<br>https://rpc.pulsechain.com<br><br>
+        Chain ID:<br>369<br><br>
+        Currency Symbol:<br>PLS<br><br>
+        Block Explorer: <br><a target="_blank" href="https://otter.pulsechain.com">https://otter.PulseChain.com</a>
+    </div>
+    You must manually add your ERC20s for them to show. <a target="_blank" href="https://scan.pulsechain.com">scan.PulseChain.com</a> also works as an alternative block explorer.
+</div>
+<span class="hl"></span>
+<div class="card">
+    <b class="title">For Developers</b>
+    Start with reading the <a target="_blank" href="https://gitlab.com/pulsechaincom/pulsechain-mainnet">docs</a>.
+    <br/><br/>
+    To get data for your applications please use one of the GraphQL endpoints for <a target="_blank"
+                                                                                     href="https://graph.pulsechain.com/subgraphs/name/pulsechain/blocks">Blocks</a>,
+    <a target="_blank" href="https://graph.pulsechain.com/subgraphs/name/pulsechain/pulsex">PulseX</a> & <a
+        target="_blank" href="https://graph.pulsechain.com/subgraphs/name/pulsechain/pairs">Pairs</a>.
+    <br/><br/>
+    You can <a target="_blank" href="https://launchpad.pulsechain.com">become a validator</a> for 32,000,000 PLS.
+    <br/><br/>
+    There also is a Beacon Chain <a target="_blank" href="https://checkpoint.pulsechain.com">Checkpoint Sync
+    Provider</a>.
+    <br/><br/>
+    Official RPC endpoint: rpc.pulsechain.com<br/>
+    Official websocket endpoint: ws.pulsechain.com
+</div>
+<br><br><br><br>
+<span style="position: relative; display: inline-block; font-weight: 600; width: 600px; max-width: 80%; font-size: 20px;" id="subTitle">
+	Live, on-chain Statistics: <a target="_blank" href="https://GoPulse.com" style="text-decoration: underline; text-decoration-thickness: .1em; text-underline-offset: .15em;">GoPulse.com</a>
+</span>
+<br><br><br>
+<span class="hl"></span>
+<div class="card">
+    <b class="title">PulseChain Goals</b>
+    <br><br>
+
+    <span class="cmrk"></span><b>Enrich ETH users</b><br>
+    PulseChain will re-enable priced out use cases: Instead of launching empty, PulseChain brings the ETH system state
+    and ERC20s, this rewards holders and founders of Ethereum based projects.<br><br>
+
+    <span class="cmrk"></span><b>Enrich ERC20 and NFT users</b><br>
+    The launch of PulseChain is the largest airdrop in history. Thousands of Ethereum based tokens and NFTs receive
+    their free PulseChain versions.
+    This <b>new gold rush</b> contains the value discovery of thousands of tokens and NFTs on PulseChain. If you always
+    wanted to be a whale in a certain ERC20 or NFT, maybe now you can be.<br><br>
+
+    <span class="cmrk"></span><b>Easy to use</b><br>
+    Your <a href="https://MetaMask.io" target="_blank">MetaMask</a> wallet just works, you only have to change a single
+    setting to access PulseChain. ETH holders can transact for free with freemium PLS.<br><br>
+
+    <span class="cmrk"></span><b>Lower PulseChain fees and serve more users</b><br>
+    PulseChain is 17% faster than Ethereum with 10 second blocks instead of 12.<br><br>
+
+    <span class="cmrk"></span><b>Remove pollution</b><br>
+    By replacing proof of work miners with proof of stake validators PulseChain doesn't burn "waste" any energy making
+    it environmentally friendly.<br><br>
+
+    <span class="cmrk"></span><b>Improve game theory</b><br>
+    PulseChain reduces the issuance of PLS by 25% per block, compared to Ethereum.<br><br>
+
+    <span class="cmrk"></span><b>Empower PulseChain holders</b><br>
+    PulseChain's native token $PLS can be used to activate validators to earn PLS for helping to secure the network.
+</div>
+<span class="hl"></span>
+<div class="card">
+    <b class="title">Interoperability "Bridging"</b>
+    <br><br>
+    ETH can be traded on the Pulse network and PLS can be traded on the Ethereum network. Bridging can also be done to
+    other smart contract capable networks.
+    <br><br>
+    <span class="cmrk"></span><b>ETH from Ethereum</b>: You can send ETH to the PulseBridge contract on ETH which locks
+    it and issues "ETH from Ethereum" on PulseChain at a 1:1 ratio.
+    <br><br>
+    <span class="cmrk"></span><b>PLS from PulseChain</b>: You can send PLS to the ETHbridge contract on PulseChain which
+    locks it and issues "PLS from PulseChain" on the Ethereum network 1:1. This <b>can also work for ERC20s</b>.
+    <br><br>
+    Anything locked on the Ethereum network bridge to the PulseChain network will be known as "[Anything] from
+    Ethereum". Example: "ETH from Ethereum" for ETH locked on Ethereum bridged to the PulseChain network.
+    <br><br>
+    <a href="https://HEX.com" target="_blank">HEX</a> is known as "HEX from Ethereum" while HEX on PulseChain is called
+    HEX.
+</div>
+<br><br><br><br>
+<span id='stars'></span>
+<span id='stars2'></span>
+<span id='stars3'></span>
+<script>
+    if (!('ethereum' in window))
+        $('#networkBtn').text('Install MetaMask').attr({href: 'https://MetaMask.io/download', target: '_blank'})
+
+    function networkSuccess() {
+        $('#networkBtnOuter').html('<a id="networkBtn" class="btn" href="javascript:adddex()">Add DEX to MetaMask</a>')
+    }
+
+    setTimeout(() => {
+        if ('ethereum' in window && ethereum.chainId == '0x171')
+            networkSuccess()
+        else
+            $('#networkBtn').css('visibility', 'visible')
+    }, 500)
+
+    function adddex() {
+        ethereum.request({
+            method: 'wallet_watchAsset',
+            params: {
+                type: 'ERC20',
+                options: {
+                    address: '0x57953dAC106a4cDa11D90273b1B9D59E169533c0',
+                    symbol: 'DEX',
+                    decimals: 18,
+                    image: 'https://tokens.dextop.pro/dexxx.svg',
+                },
+            },
+        }).catch(console.error)
+    }
+
+    function switchNetwork() {
+        ethereum.request({
+            method: 'wallet_switchEthereumChain',
+            params: [{chainId: '0x171'}]
+        }).then(networkSuccess).catch(e => {
+            if (e.code != 4902) return
+
+            ethereum.request({
+                method: 'wallet_addEthereumChain',
+                params: [{
+                    chainId: '0x171',
+                    chainName: 'PulseChain',
+                    nativeCurrency: {name: 'Pulse', symbol: 'PLS', decimals: 18},
+                    rpcUrls: ['https://rpc.pulsechain.com'],
+                    blockExplorerUrls: ['https://otter.pulsechain.com']
+                }]
+            }).then(networkSuccess)
+        })
+    }
+
+	// detect Network account change
+    window.addEventListener('load', ()=>{
+        if (window.ethereum)
+            window.ethereum.on('networkChanged', networkId => {
+                if (networkId !== 369)
+                    $('#networkBtnOuter').html('<a id="networkBtn" class="btn" href="javascript:switchNetwork()">Add PulseChain to MetaMask</a>')
+                else
+                    networkSuccess()
+            })
+    })
+</script>
+</body>
+</html>
